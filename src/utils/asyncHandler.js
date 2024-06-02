@@ -7,7 +7,8 @@ const asyncHandler = (requestHandler) => {
 
 export { asyncHandler }
 
-
+//requestHander is wrapped with a promise and is resolved whether is asynchronous or not.
+//If there is an error, it is passed to next function, which invokes the error-handling middleware in Express.
 
 
 // const asyncHandler = () => {}
