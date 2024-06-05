@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loginUser, logoutUser, registerUser, refreshAccessToken } from "../controllers/user.controller.js";
+import { loginUser, logoutUser, registerUser, refreshAccessToken, changeCurrentPassword, geCurrenttUser } from "../controllers/user.controller.js";
 import {upload} from '../middlewares/multer.middleware.js'
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -21,5 +21,7 @@ router.route("/login").post(loginUser)
 //securedRoutes
 router.route("/logout").post(verifyJWT, logoutUser)    //verifyJWT is another middleware we created to verify tokens
 router.route("/refresh-token").post(refreshAccessToken)
+router.route("/change-password").post(verifyJWT, changeCurrentPassword)
+router.route("/get-user").post(verifyJWT, geCurrenttUser)
 
 export default router
